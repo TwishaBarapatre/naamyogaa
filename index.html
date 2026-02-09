@@ -1,0 +1,1921 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NaamYoga - Where Ancient Yoga Meets Modern Convenience</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --color-bg: #e8f4f8;
+      --color-surface: #ffffff;
+      --color-text: #2c3e50;
+      --color-primary: #7ba7bc;
+      --color-secondary: #a8d5e2;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      overflow-x: hidden;
+    }
+    
+    .font-serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--color-bg);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--color-secondary);
+      border-radius: 4px;
+    }
+    
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(196, 149, 106, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(196, 149, 106, 0.6); }
+    }
+    
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    @keyframes reveal-up {
+      from { opacity: 0; transform: translateY(60px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes reveal-scale {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    @keyframes lotus-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .animate-pulse-glow {
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    
+    .animate-gradient {
+      background-size: 200% 200%;
+      animation: gradient-shift 8s ease infinite;
+    }
+    
+    .animate-reveal {
+      animation: reveal-up 1s ease forwards;
+    }
+    
+    .animate-reveal-scale {
+      animation: reveal-scale 0.8s ease forwards;
+    }
+    
+    .animate-lotus {
+      animation: lotus-spin 20s linear infinite;
+    }
+    
+    .animate-breathe {
+      animation: breathe 4s ease-in-out infinite;
+    }
+    
+    /* Intersection Observer Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .reveal-left.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .reveal-right.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    /* Gradient Text */
+    .gradient-text {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-text), var(--color-primary));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient-shift 4s ease infinite;
+    }
+    
+    /* Glass Effect */
+    .glass {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(123, 167, 188, 0.2);
+    }
+    
+    /* Hover Effects */
+    .hover-lift {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hover-lift:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(196, 149, 106, 0.2);
+    }
+    
+    /* Button Styles */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      color: var(--color-bg);
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 14px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+    
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(196, 149, 106, 0.4);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      color: var(--color-primary);
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      border: 2px solid var(--color-primary);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+    
+    .btn-outline:hover {
+      background: var(--color-primary);
+      color: var(--color-bg);
+      transform: scale(1.05);
+    }
+    
+    /* Navigation */
+    .nav-link {
+      position: relative;
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      color: var(--color-primary);
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    /* Card Styles */
+    .yoga-card {
+      background: var(--color-surface);
+      border-radius: 24px;
+      padding: 40px 30px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(196, 149, 106, 0.1);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .yoga-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+    
+    .yoga-card:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .yoga-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--color-primary);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Schedule Card */
+    .schedule-card {
+      background: linear-gradient(145deg, var(--color-surface), rgba(255, 255, 255, 0.95));
+      border-radius: 20px;
+      padding: 30px;
+      border: 1px solid rgba(123, 167, 188, 0.25);
+      transition: all 0.4s ease;
+    }
+    
+    .schedule-card:hover {
+      border-color: var(--color-primary);
+      transform: scale(1.02);
+    }
+    
+    /* Decorative Elements */
+    .mandala {
+      position: absolute;
+      opacity: 0.03;
+      pointer-events: none;
+    }
+    
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    
+    /* Form Styles */
+    .form-input {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(123, 167, 188, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      color: var(--color-text);
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 20px rgba(123, 167, 188, 0.2);
+    }
+    
+    .form-input::placeholder {
+      color: rgba(44, 62, 80, 0.4);
+    }
+    
+    /* Testimonial Slider */
+    .testimonial-container {
+      overflow: hidden;
+    }
+    
+    .testimonial-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    
+    /* WhatsApp Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+      animation: pulse-glow 2s infinite;
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 400px;
+      height: 100%;
+      background: var(--color-surface);
+      z-index: 1001;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 80px 40px;
+    }
+    
+    .mobile-menu.active {
+      right: 0;
+    }
+    
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .menu-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* Loader */
+    .page-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--color-bg);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    
+    .page-loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .loader-lotus {
+      width: 80px;
+      height: 80px;
+      animation: lotus-spin 2s linear infinite;
+    }
+    
+    /* Section Divider */
+    .section-divider {
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+    
+    /* Counter Animation */
+    .counter {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+    
+    /* Parallax Effect */
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    /* Custom Radio/Checkbox */
+    .custom-radio {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--color-primary);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .custom-radio:checked {
+      background: var(--color-primary);
+      box-shadow: inset 0 0 0 4px var(--color-bg);
+    }
+    
+    /* Pricing Toggle */
+    .pricing-toggle {
+      background: var(--color-surface);
+      border-radius: 50px;
+      padding: 5px;
+      display: inline-flex;
+    }
+    
+    .pricing-btn {
+      padding: 10px 30px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Outfit', sans-serif;
+      background: transparent;
+      color: var(--color-text);
+    }
+    
+    .pricing-btn.active {
+      background: var(--color-primary);
+      color: var(--color-bg);
+    }
+    
+    /* Timeline */
+    .timeline-item {
+      position: relative;
+      padding-left: 40px;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      box-shadow: 0 0 20px rgba(196, 149, 106, 0.5);
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 20px;
+      width: 2px;
+      height: calc(100% - 10px);
+      background: linear-gradient(to bottom, var(--color-primary), transparent);
+    }
+    
+    .timeline-item:last-child::after {
+      display: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 3rem !important;
+      }
+      
+      .section-title {
+        font-size: 2.5rem !important;
+      }
+      
+      .counter {
+        font-size: 36px;
+      }
+
+    }
+
+.video-box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #000;
+}
+
+.video-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+/* Optional: softer controls */
+.video-box video::-webkit-media-controls-panel {
+  background: rgba(0,0,0,0.45);
+}
+
+
+
+
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full"><!-- Page Loader -->
+  <div class="page-loader" id="pageLoader">
+   <svg class="loader-lotus" viewbox="0 0 100 100"><defs>
+     <lineargradient id="loaderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7ba7bc" />
+      <stop offset="100%" style="stop-color:#a8d5e2" />
+     </lineargradient>
+    </defs> <path fill="url(#loaderGrad)" d="M50 5 C55 25 75 30 75 50 C75 65 65 75 50 80 C35 75 25 65 25 50 C25 30 45 25 50 5Z" /> <circle cx="50" cy="50" r="10" fill="#ffffff" /> <circle cx="50" cy="50" r="5" fill="url(#loaderGrad)" />
+   </svg>
+  </div><!-- Mobile Menu Overlay -->
+  <div class="menu-overlay" id="menuOverlay"></div><!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu"><button id="closeMenu" class="absolute top-6 right-6 text-3xl text-[#2c3e50] hover:text-[#7ba7bc] transition-colors"> ✕ </button>
+   <nav class="flex flex-col gap-8"><a href="#home" class="text-2xl font-light text-[#2c3e50] hover:text-[#7ba7bc] transition-colors mobile-nav-link">Home</a> <a href="#about" class="text-2xl font-light text-[#2c3e50] hover:text-[#7ba7bc] transition-colors mobile-nav-link">About</a> <a href="#services" class="text-2xl font-light text-[#2c3e50] hover:text-[#7ba7bc] transition-colors mobile-nav-link">Services</a> <a href="#pricing" class="text-2xl font-light text-[#2c3e50] hover:text-[#7ba7bc] transition-colors mobile-nav-link">Pricing</a> <a href="#instructor" class="text-2xl font-light text-[#2c3e50] hover:text-[#7ba7bc] transition-colors mobile-nav-link">Instructor</a> <a href="#videos" class="text-2xl font-light text-[#2c3e50] hover:text-[#7ba7bc] transition-colors mobile-nav-link">Videos</a> <a href="#gallery" class="text-2xl font-light text-[#2c3e50] hover:text-[#7ba7bc] transition-colors mobile-nav-link">Gallery</a> <a href="#contact" class="text-2xl font-light text-[#2c3e50] hover:text-[#7ba7bc] transition-colors mobile-nav-link">Contact</a> <button class="btn-primary mt-8">Book a Session</button>
+   </nav>
+  </div><!-- Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" id="navbar">
+   <div class="max-w-7xl mx-auto px-6 py-4">
+    <nav class="glass rounded-full px-8 py-4 flex items-center justify-between"><a href="#home" class="flex items-center gap-3">
+      <svg width="40" height="40" viewbox="0 0 100 100"><defs>
+        <lineargradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+         <stop offset="0%" style="stop-color:#7ba7bc" />
+         <stop offset="100%" style="stop-color:#a8d5e2" />
+        </lineargradient>
+       </defs> <path fill="url(#logoGrad)" d="M50 5 C55 25 75 30 75 50 C75 65 65 75 50 80 C35 75 25 65 25 50 C25 30 45 25 50 5Z" /> <circle cx="50" cy="50" r="10" fill="#ffffff" /> <circle cx="50" cy="50" r="5" fill="url(#logoGrad)" />
+      </svg><span id="navBrandName" class="text-xl font-semibold tracking-wide">NaamYoga</span> </a>
+     <div class="hidden lg:flex items-center gap-10"><a href="#home" class="nav-link">Home</a> <a href="#about" class="nav-link">About</a> <a href="#services" class="nav-link">Services</a> <a href="#pricing" class="nav-link">Pricing</a> <a href="#instructor" class="nav-link">Instructor</a> <a href="#videos" class="nav-link">Videos</a> <a href="#gallery" class="nav-link">Gallery</a> <a href="#contact" class="nav-link">Contact</a>
+     </div>
+     <div class="hidden lg:block"><button class="btn-primary" onclick="scrollToSection('contact')">Book Now</button>
+     </div><button class="lg:hidden text-2xl" id="menuBtn">☰</button>
+    </nav>
+   </div>
+  </header><!-- Main Content -->
+  <main class="w-full" id="mainContent"><!-- Hero Section -->
+   <section id="home" class="min-h-screen relative flex items-center overflow-hidden bg-[#e8f4f8]"><!-- Background Elements -->
+    <div class="glow-orb w-96 h-96 bg-[#7ba7bc] opacity-10 top-20 -left-48 animate-breathe"></div>
+    <div class="glow-orb w-80 h-80 bg-[#a8d5e2] opacity-10 bottom-20 right-0 animate-breathe" style="animation-delay: 2s;"></div><!-- Mandala Background -->
+    <svg class="mandala w-full h-full absolute top-0 left-0 animate-lotus" viewbox="0 0 400 400" style="opacity: 0.02;"><circle cx="200" cy="200" r="180" fill="none" stroke="#7ba7bc" stroke-width="0.5" /> <circle cx="200" cy="200" r="150" fill="none" stroke="#7ba7bc" stroke-width="0.5" /> <circle cx="200" cy="200" r="120" fill="none" stroke="#7ba7bc" stroke-width="0.5" /> <circle cx="200" cy="200" r="90" fill="none" stroke="#7ba7bc" stroke-width="0.5" /> <circle cx="200" cy="200" r="60" fill="none" stroke="#7ba7bc" stroke-width="0.5" />
+    </svg>
+    <div class="max-w-7xl mx-auto px-6 pt-32 pb-20 relative z-10">
+     <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="text-center lg:text-left">
+       <p class="text-[#7ba7bc] tracking-[4px] uppercase text-sm mb-6 animate-reveal" style="animation-delay: 0.2s;">Welcome to</p>
+       <h1 id="heroBrandName" class="hero-title font-serif text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gradient-text animate-reveal" style="animation-delay: 0.4s;">NaamYoga</h1>
+       <p id="heroTagline" class="text-xl md:text-2xl font-light text-[#2c3e50] opacity-80 mb-8 animate-reveal" style="animation-delay: 0.6s;">Where Ancient Yoga Meets Modern Convenience</p>
+       <p class="text-lg text-[#2c3e50] opacity-60 mb-10 max-w-xl animate-reveal" style="animation-delay: 0.8s;">Experience authentic, traditional Indian yoga from the comfort of your home. Join thousands who have discovered balance, flexibility, and inner peace.</p>
+       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-reveal" style="animation-delay: 1s;"><button class="btn-primary" onclick="scrollToSection('contact')">Start Your Journey</button> <button class="btn-outline" onclick="scrollToSection('about')">Learn More</button>
+       </div><!-- Stats -->
+       <div class="grid grid-cols-3 gap-8 mt-16 animate-reveal" style="animation-delay: 1.2s;">
+        <div class="text-center lg:text-left">
+         <p class="counter text-[#7ba7bc]" data-target="2000">0</p>
+         <p class="text-sm text-[#2c3e50] opacity-60 mt-1">Happy Students</p>
+        </div>
+        <div class="text-center lg:text-left">
+         <p class="counter text-[#7ba7bc]" data-target="8">0</p>
+         <p class="text-sm text-[#2c3e50] opacity-60 mt-1">Years Experience</p>
+        </div>
+        <div class="text-center lg:text-left">
+         <p class="counter text-[#7ba7bc]" data-target="25">0</p>
+         <p class="text-sm text-[#2c3e50] opacity-60 mt-1">Countries</p>
+        </div>
+       </div>
+      </div><!-- Hero Visual -->
+      <div class="relative flex justify-center animate-reveal-scale" style="animation-delay: 0.6s;">
+       <div class="relative"><!-- Decorative Circles -->
+        <div class="absolute -top-10 -left-10 w-80 h-80 border border-[#7ba7bc] rounded-full opacity-20 animate-breathe"></div>
+        <div class="absolute -bottom-10 -right-10 w-96 h-96 border border-[#a8d5e2] rounded-full opacity-10 animate-breathe" style="animation-delay: 1s;"></div><!-- Main Visual -->
+        <div class="w-72 h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-[#ffffff] to-[#e8f4f8] border border-[#7ba7bc] flex items-center justify-center relative overflow-hidden">
+         <svg class="w-48 h-48 md:w-64 md:h-64 animate-float" viewbox="0 0 200 200"><defs>
+           <lineargradient id="lotusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#7ba7bc" />
+            <stop offset="100%" style="stop-color:#a8d5e2" />
+           </lineargradient>
+          </defs> <!-- Lotus Flower --> <ellipse cx="100" cy="170" rx="40" ry="15" fill="url(#lotusGrad)" opacity="0.3" /> <path d="M100 30 Q120 70 100 110 Q80 70 100 30" fill="url(#lotusGrad)" /> <path d="M60 60 Q90 80 100 110 Q70 90 60 60" fill="url(#lotusGrad)" opacity="0.8" /> <path d="M140 60 Q110 80 100 110 Q130 90 140 60" fill="url(#lotusGrad)" opacity="0.8" /> <path d="M40 90 Q70 95 100 110 Q60 105 40 90" fill="url(#lotusGrad)" opacity="0.6" /> <path d="M160 90 Q130 95 100 110 Q140 105 160 90" fill="url(#lotusGrad)" opacity="0.6" /> <!-- Meditating Figure --> <circle cx="100" cy="70" r="15" fill="url(#lotusGrad)" /> <path d="M85 85 Q100 100 115 85 L120 120 Q100 130 80 120 Z" fill="url(#lotusGrad)" /> <path d="M70 105 Q85 110 80 120" stroke="url(#lotusGrad)" stroke-width="4" fill="none" /> <path d="M130 105 Q115 110 120 120" stroke="url(#lotusGrad)" stroke-width="4" fill="none" />
+         </svg><!-- Floating Elements -->
+         <div class="absolute top-10 right-10 text-2xl animate-float" style="animation-delay: 1s;">
+          🧘
+         </div>
+         <div class="absolute bottom-20 left-5 text-xl animate-float" style="animation-delay: 2s;">
+          ✨
+         </div>
+         <div class="absolute top-20 left-10 text-lg animate-float" style="animation-delay: 0.5s;">
+          🌸
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    
+    </div>
+   </section><!-- About Section -->
+   <section id="about" class="py-24 relative overflow-hidden bg-[#ffffff]">
+    <div class="glow-orb w-72 h-72 bg-[#7ba7bc] opacity-5 -top-20 right-0"></div>
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-20 reveal">
+      <p class="text-[#7ba7bc] tracking-[4px] uppercase text-sm mb-4">About Us</p>
+      <h2 class="section-title font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#2c3e50]">Authentic Yoga,<br><span class="gradient-text">Modern Approach</span></h2>
+      <div class="section-divider"></div>
+     </div>
+     <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal-left">
+       <div class="relative">
+        <div class="w-full aspect-square rounded-3xl bg-gradient-to-br from-[#ffffff] to-[#e8f4f8] border border-[#7ba7bc] border-opacity-20 p-8 flex items-center justify-center">
+         <svg class="w-full max-w-md" viewbox="0 0 300 300"><!-- Om Symbol --> <defs>
+           <lineargradient id="omGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#7ba7bc" />
+            <stop offset="50%" style="stop-color:#2c3e50" />
+            <stop offset="100%" style="stop-color:#a8d5e2" />
+           </lineargradient>
+          </defs> <text x="150" y="200" text-anchor="middle" fill="url(#omGrad)" font-size="180" font-family="serif">
+           ॐ
+          </text>
+         </svg>
+        </div>
+       
+       </div>
+      </div>
+      <div class="reveal-right">
+       <h3 class="font-serif text-3xl mb-6 text-[#2c3e50]">Looking for authentic yoga rooted in tradition?</h3>
+       <p class="text-[#2c3e50] opacity-70 mb-6 leading-relaxed">With NaamYoga, you don't need to travel to an ashram or attend crowded studios. You can now access genuine, traditional Indian yoga from the comfort of your home.</p>
+       <p class="text-[#2c3e50] opacity-70 mb-6 leading-relaxed">Through our online yoga classes, we bring you centuries-old practices adapted for modern lifestyles. Our sessions are led by experienced Indian yoga instructors who don't just teach poses—they guide you through the deeper philosophy of yoga, focusing on breath, posture, awareness, and healing.</p>
+       <p class="text-[#2c3e50] opacity-70 mb-8 leading-relaxed">Whether you're a beginner, senior, pregnant mother, or someone dealing with specific health concerns like knee pain, sinus, or stress, our classes are tailored just for you.</p>
+       <div class="grid grid-cols-2 gap-6 mb-8">
+        <div class="flex items-center gap-3"><span class="text-2xl">🎯</span> <span class="text-sm text-[#2c3e50]">Personalized Sessions</span>
+        </div>
+        <div class="flex items-center gap-3"><span class="text-2xl">🌍</span> <span class="text-sm text-[#2c3e50]">Global Community</span>
+        </div>
+        <div class="flex items-center gap-3"><span class="text-2xl">📅</span> <span class="text-sm text-[#2c3e50]">Flexible Timings</span>
+        </div>
+        <div class="flex items-center gap-3"><span class="text-2xl">🧘</span> <span class="text-sm text-[#2c3e50]">Expert Instructors</span>
+        </div>
+       </div><button class="btn-primary" onclick="scrollToSection('contact')">Join Our Community</button>
+      </div>
+     </div>
+    </div>
+   </section><!-- Services Section -->
+   <section id="services" class="py-24 relative overflow-hidden bg-[#e8f4f8]">
+    <div class="glow-orb w-96 h-96 bg-[#a8d5e2] opacity-5 bottom-0 left-0"></div>
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-20 reveal">
+      <p class="text-[#7ba7bc] tracking-[4px] uppercase text-sm mb-4">Our Services</p>
+      <h2 class="section-title font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#2c3e50]">Yoga Programs<br><span class="gradient-text">For Everyone</span></h2>
+      <div class="section-divider"></div>
+      <p class="text-[#2c3e50] opacity-60 mt-6 max-w-2xl mx-auto">From beginners to advanced practitioners, we offer specialized yoga programs tailored to your unique needs and goals.</p>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"><!-- Service Cards -->
+      <div class="yoga-card hover-lift reveal" style="animation-delay: 0.1s;">
+       <div class="text-4xl mb-6">
+        🧘‍♀️
+       </div>
+       <h3 class="text-xl font-semibold mb-3 text-[#2c3e50]">Hatha Yoga</h3>
+       <p class="text-[#2c3e50] opacity-60 text-sm leading-relaxed">Traditional poses and breathing techniques for physical and mental balance.</p>
+      </div>
+      <div class="yoga-card hover-lift reveal" style="animation-delay: 0.2s;">
+       <div class="text-4xl mb-6">
+        🤰
+       </div>
+       <h3 class="text-xl font-semibold mb-3 text-[#2c3e50]">Prenatal Yoga</h3>
+       <p class="text-[#2c3e50] opacity-60 text-sm leading-relaxed">Safe and nurturing practices for expecting mothers at every stage.</p>
+      </div>
+      <div class="yoga-card hover-lift reveal" style="animation-delay: 0.3s;">
+       <div class="text-4xl mb-6">
+        🏋️
+       </div>
+       <h3 class="text-xl font-semibold mb-3 text-[#2c3e50]">Strength Training</h3>
+       <p class="text-[#2c3e50] opacity-60 text-sm leading-relaxed">Build muscle and endurance through yoga-based strength exercises.</p>
+      </div>
+      <div class="yoga-card hover-lift reveal" style="animation-delay: 0.4s;">
+       <div class="text-4xl mb-6">
+        🧠
+       </div>
+       <h3 class="text-xl font-semibold mb-3 text-[#2c3e50]">Meditation</h3>
+       <p class="text-[#2c3e50] opacity-60 text-sm leading-relaxed">Deep relaxation and mindfulness practices for inner peace.</p>
+      </div>
+      <div class="yoga-card hover-lift reveal" style="animation-delay: 0.5s;">
+       <div class="text-4xl mb-6">
+        ⚡
+       </div>
+       <h3 class="text-xl font-semibold mb-3 text-[#2c3e50]">Advanced Yoga</h3>
+       <p class="text-[#2c3e50] opacity-60 text-sm leading-relaxed">Challenge yourself with complex asanas and advanced techniques.</p>
+      </div>
+      <div class="yoga-card hover-lift reveal" style="animation-delay: 0.6s;">
+       <div class="text-4xl mb-6">
+        ⚖️
+       </div>
+       <h3 class="text-xl font-semibold mb-3 text-[#2c3e50]">Weight Management</h3>
+       <p class="text-[#2c3e50] opacity-60 text-sm leading-relaxed">Achieve your ideal weight through targeted yoga practices.</p>
+      </div>
+      <div class="yoga-card hover-lift reveal" style="animation-delay: 0.7s;">
+       <div class="text-4xl mb-6">
+        😊
+       </div>
+       <h3 class="text-xl font-semibold mb-3 text-[#2c3e50]">Face Yoga</h3>
+       <p class="text-[#2c3e50] opacity-60 text-sm leading-relaxed">Natural facial exercises for a youthful, glowing appearance.</p>
+      </div>
+      <div class="yoga-card hover-lift reveal" style="animation-delay: 0.8s;">
+       <div class="text-4xl mb-6">
+        👶
+       </div>
+       <h3 class="text-xl font-semibold mb-3 text-[#2c3e50]">Kids Yoga</h3>
+       <p class="text-[#2c3e50] opacity-60 text-sm leading-relaxed">Fun and engaging yoga sessions designed for children.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Schedule Section -->
+<section id="schedule" class="py-24 relative overflow-hidden bg-[#ffffff]">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Section Heading -->
+    <div class="text-center mb-20 reveal">
+      <p class="text-[#7ba7bc] tracking-[4px] uppercase text-sm mb-4">Class Schedule</p>
+      <h2 class="section-title font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#2c3e50]">
+        Find Your<br><span class="gradient-text">Perfect Time</span>
+      </h2>
+      <div class="section-divider"></div>
+
+      <p class="mt-8 text-lg font-semibold text-[#2c3e50]">
+        Join any batch, any day 
+       
+      </p>
+    </div>
+
+    <!-- Schedule Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Morning -->
+      <div class="schedule-card reveal">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-[#7ba7bc] font-semibold">Morning Batch</span>
+          <span class="text-2xl">🌅</span>
+        </div>
+
+        <div class="flex gap-3 mb-3">
+          <span class="time-pill">4:00 AM</span>
+          <span class="time-pill">5:00 AM</span>
+        </div>
+
+        <p class="text-[#2c3e50] opacity-60 text-sm mb-4">Mon – Fri</p>
+
+        <div class="flex flex-wrap gap-2">
+          
+        </div>
+      </div>
+
+      <!-- Early Morning -->
+      <div class="schedule-card reveal">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-[#7ba7bc] font-semibold">Early Morning</span>
+          <span class="text-2xl">☀️</span>
+        </div>
+
+        <div class="flex gap-3 mb-3">
+          <span class="time-pill">6:00 AM</span>
+          <span class="time-pill">7:00 AM</span>
+        </div>
+
+        <p class="text-[#2c3e50] opacity-60 text-sm mb-4">Mon – Fri</p>
+
+        <div class="flex flex-wrap gap-2">
+          
+        </div>
+      </div>
+
+      <!-- Late Morning -->
+      <div class="schedule-card reveal">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-[#7ba7bc] font-semibold">Late Morning</span>
+          <span class="text-2xl">🌤️</span>
+        </div>
+
+        <div class="flex gap-3 mb-3">
+          <span class="time-pill">8:00 AM</span>
+          <span class="time-pill">10:00 AM</span>
+        </div>
+
+        <p class="text-[#2c3e50] opacity-60 text-sm mb-4">Mon – Fri</p>
+
+        <div class="flex flex-wrap gap-2">
+      
+        </div>
+      </div>
+
+      <!-- Midday -->
+      <div class="schedule-card reveal">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-[#7ba7bc] font-semibold">Midday</span>
+          <span class="text-2xl">🌞</span>
+        </div>
+
+        <div class="flex gap-3 mb-3">
+          <span class="time-pill">11:00 AM</span>
+          <span class="time-pill">2:00 PM</span>
+        </div>
+
+        <p class="text-[#2c3e50] opacity-60 text-sm mb-4">Mon – Fri</p>
+
+        <div class="flex flex-wrap gap-2">
+         
+        </div>
+      </div>
+
+      <!-- Evening -->
+      <div class="schedule-card reveal">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-[#7ba7bc] font-semibold">Evening</span>
+          <span class="text-2xl">🌆</span>
+        </div>
+
+        <div class="flex gap-3 mb-3">
+          <span class="time-pill">4:00 PM</span>
+          <span class="time-pill">7:00 PM</span>
+        </div>
+
+        <p class="text-[#2c3e50] opacity-60 text-sm mb-4">Mon – Fri</p>
+
+        <div class="flex flex-wrap gap-2">
+          
+        </div>
+      </div>
+
+      <!-- Night -->
+      <div class="schedule-card reveal">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-[#7ba7bc] font-semibold">Night</span>
+          <span class="text-2xl">🌙</span>
+        </div>
+
+        <div class="flex gap-3 mb-3">
+          <span class="time-pill">8:00 PM</span>
+          <span class="time-pill">10:00 PM</span>
+        </div>
+
+        <p class="text-[#2c3e50] opacity-60 text-sm mb-4">Mon – Fri</p>
+
+        <div class="flex flex-wrap gap-2">
+         
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section -->
+   <section id="pricing" class="py-24 relative overflow-hidden bg-[#d4e9f0]">
+    <div class="glow-orb w-96 h-96 bg-[#7ba7bc] opacity-10 top-0 right-0"></div>
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-20 reveal">
+      <p class="text-[#7ba7bc] tracking-[4px] uppercase text-sm mb-4">Pricing Plans</p>
+      <h2 class="section-title font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Choose Your<br><span class="gradient-text">Perfect Package</span></h2>
+      <div class="section-divider"></div>
+      <p class="text-[#2c3e50] opacity-60 mt-6 max-w-2xl mx-auto">Flexible pricing options designed to fit your lifestyle and budget. All packages include personalized attention and expert guidance.</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto"><!-- Basic Plan -->
+      <div class="glass rounded-3xl p-8 reveal hover-lift relative overflow-hidden" style="animation-delay: 0.1s;">
+       <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#7ba7bc] to-[#a8d5e2]"></div>
+       <div class="text-center mb-6">
+        <div class="w-16 h-16 bg-gradient-to-br from-[#7ba7bc] to-[#a8d5e2] rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">
+         🌱
+        </div>
+        <h3 class="text-2xl font-bold mb-2">Basic</h3>
+        <p class="text-[#2c3e50] opacity-60 text-sm">Perfect for beginners</p>
+       </div>
+       <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-2"><span id="basicPrice" class="text-5xl font-bold text-[#7ba7bc]">₹1500</span> <span class="text-[#2c3e50] opacity-60">/month</span>
+        </div>
+       </div>
+       <ul class="space-y-4 mb-8">
+        <li class="flex items-start gap-3"><span class="text-[#7ba7bc] text-xl">✓</span> <span class="text-sm text-[#2c3e50] opacity-80">Access to any one batch per day</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#7ba7bc] text-xl">✓</span> <span class="text-sm text-[#2c3e50] opacity-80">WhatsApp community support</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#7ba7bc] text-xl">✓</span> <span class="text-sm text-[#2c3e50] opacity-80">Monthly progress tracking</span></li>
+      
+       </ul><button class="btn-outline w-full" onclick="scrollToSection('contact')">Get Started</button>
+      </div><!-- Standard Plan (Popular) -->
+      <div class="glass rounded-3xl p-8 reveal hover-lift relative overflow-hidden border-2 border-[#7ba7bc]" style="animation-delay: 0.2s;">
+       <div class="absolute top-6 right-6 bg-gradient-to-r from-[#7ba7bc] to-[#a8d5e2] text-white text-xs font-bold px-4 py-1 rounded-full">
+        POPULAR
+       </div>
+       <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#7ba7bc] to-[#a8d5e2]"></div>
+       <div class="text-center mb-6">
+        <div class="w-16 h-16 bg-gradient-to-br from-[#7ba7bc] to-[#a8d5e2] rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">
+         🌟
+        </div>
+        <h3 class="text-2xl font-bold mb-2">Standard</h3>
+        <p class="text-[#2c3e50] opacity-60 text-sm">Most popular choice</p>
+       </div>
+       <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-2"><span id="standardPrice" class="text-5xl font-bold text-[#7ba7bc]">₹2500</span> <span class="text-[#2c3e50] opacity-60">/month</span>
+        </div>
+       </div>
+       <ul class="space-y-4 mb-8">
+        <li class="flex items-start gap-3"><span class="text-[#7ba7bc] text-xl">✓</span> <span class="text-sm text-[#2c3e50] opacity-80">Access to up to 12 batches daily (join any time)</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#7ba7bc] text-xl">✓</span> <span class="text-sm text-[#2c3e50] opacity-80">Weekly progress report</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#7ba7bc] text-xl">✓</span> <span class="text-sm text-[#2c3e50] opacity-80">WhatsApp support</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#7ba7bc] text-xl">✓</span> <span class="text-sm text-[#2c3e50] opacity-80">Personalized instructor guidance</span></li>
+       
+       </ul><button class="btn-primary w-full" onclick="scrollToSection('contact')">Get Started</button>
+      </div><!-- Premium Plan -->
+      <div class="glass rounded-3xl p-8 reveal hover-lift relative overflow-hidden" style="animation-delay: 0.3s;">
+       <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#7ba7bc] to-[#a8d5e2]"></div>
+       <div class="text-center mb-6">
+        <div class="w-16 h-16 bg-gradient-to-br from-[#7ba7bc] to-[#a8d5e2] rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4">
+         👑
+        </div>
+        <h3 class="text-2xl font-bold mb-2">Premium</h3>
+        <p class="text-[#2c3e50] opacity-60 text-sm">Complete transformation</p>
+       </div>
+       <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-2"><span id="premiumPrice" class="text-5xl font-bold text-[#7ba7bc]">₹6500</span> <span class="text-[#2c3e50] opacity-60">/month</span>
+        </div>
+       </div>
+       <ul class="space-y-4 mb-8">
+        <li class="flex items-start gap-3"><span class="text-[#7ba7bc] text-xl">✓</span> <span class="text-sm text-[#2c3e50] opacity-80">Unlimited group sessions</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#7ba7bc] text-xl">✓</span> <span class="text-sm text-[#2c3e50] opacity-80"> one-on-one sessions/month</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#7ba7bc] text-xl">✓</span> <span class="text-sm text-[#2c3e50] opacity-80">Access to advanced workshops</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#7ba7bc] text-xl">✓</span> <span class="text-sm text-[#2c3e50] opacity-80">Personalized diet plan</span></li>
+        <li class="flex items-start gap-3"><span class="text-[#7ba7bc] text-xl">✓</span> <span class="text-sm text-[#2c3e50] opacity-80">24/7 instructor support</span></li>
+       
+       </ul><button class="btn-outline w-full" onclick="scrollToSection('contact')">Get Started</button>
+      </div>
+     </div>
+     <div class="text-center mt-16 reveal">
+      <p class="text-[#2c3e50] opacity-60 mb-4">🎁 Special offer: Get 10% off on 3 months package</p>
+      <p class="text-sm text-[#2c3e50] opacity-50">All plans include a 1 free trial • No credit card required • Cancel anytime</p>
+     </div>
+    </div>
+   </section><!-- Instructor Profile Section -->
+<section id="instructor" class="py-24 relative overflow-hidden">
+  <div class="glow-orb w-80 h-80 bg-[#a8d5e2] opacity-10 bottom-0 left-0"></div>
+
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Section Heading -->
+    <div class="text-center mb-20 reveal">
+      <p class="text-[#7ba7bc] tracking-[4px] uppercase text-sm mb-4">Meet Your Instructor</p>
+      <h2 class="section-title font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+        Expert Guidance<br><span class="gradient-text">Authentic Practice</span>
+      </h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="grid lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
+
+      <!-- Instructor Image -->
+      <div class="reveal-left relative">
+        <div class="rounded-3xl bg-gradient-to-br from-[#7ba7bc] to-[#a8d5e2] p-1">
+          <div class="rounded-3xl bg-white overflow-hidden">
+
+            <img
+              src="images/gallary/first.jpg"
+              alt="Yoga Instructor"
+              class="w-full h-auto object-cover"
+            />
+
+          </div>
+        </div>
+
+        <!-- Experience Badge -->
+        <div class="absolute -top-6 -right-6 glass rounded-2xl p-4 animate-float">
+          <p class="text-2xl font-bold text-[#7ba7bc]">8+</p>
+          <p class="text-xs text-[#2c3e50] opacity-60">Years</p>
+        </div>
+      </div>
+
+      <!-- Instructor Details -->
+      <div class="reveal-right">
+        <h3 id="instructorName" class="font-serif text-4xl mb-2">Ridhi Mehta</h3>
+        <p id="instructorTitle" class="text-xl text-[#7ba7bc] mb-6">
+          Master Yoga Instructor &amp; Wellness Coach
+        </p>
+
+        <div class="space-y-6 mb-8">
+          <p class="text-[#2c3e50] opacity-80 leading-relaxed">
+            Namaste! I’m Ridhi Mehta, a certified yoga instructor and wellness coach with over 8 years of experience in traditional Hatha, Vinyasa Flow, and yoga practices that beautifully integrate strength, flexibility, breathwork, and mindful cardio.
+          </p>
+
+          <p class="text-[#2c3e50] opacity-80 leading-relaxed">
+            I specialize in teaching a wide spectrum of yoga practices including Hatha Yoga, Vinyasa Flow, Ashtanga Yoga, Pranayama, Meditation, and therapeutic yoga techniques.
+          </p>
+
+          <p class="text-[#2c3e50] opacity-80 leading-relaxed">
+            Over the years, I have guided students from more than 30 countries, blending traditional yogic wisdom with modern techniques to support holistic wellness and conscious living.
+          </p>
+        </div>
+
+        <!-- Certifications -->
+        <div class="grid grid-cols-2 gap-4 mb-8">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🎓</span>
+            <div>
+              <p class="font-semibold text-sm">MSc in Yoga</p>
+              <p class="text-xs text-[#2c3e50] opacity-60">Post Graduate Degree</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🏆</span>
+            <div>
+              <p class="font-semibold text-sm">RYT 500 Certified</p>
+              <p class="text-xs text-[#2c3e50] opacity-60">Yoga Alliance</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🤰</span>
+            <div>
+              <p class="font-semibold text-sm">Prenatal Specialist</p>
+              <p class="text-xs text-[#2c3e50] opacity-60">Certified Trainer</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🧘</span>
+            <div>
+              <p class="font-semibold text-sm">Meditation Master</p>
+              <p class="text-xs text-[#2c3e50] opacity-60">Advanced Level</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🌿</span>
+            <div>
+              <p class="font-semibold text-sm">Ayurveda Coach</p>
+              <p class="text-xs text-[#2c3e50] opacity-60">Holistic Wellness</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex gap-4">
+          <button class="btn-primary" onclick="scrollToSection('contact')">Book a Session</button>
+          <button class="btn-outline" onclick="scrollToSection('schedule')">View Schedule</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Gallery Section -->
+   <section id="gallery" class="py-24 relative overflow-hidden bg-[#d4e9f0]">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-20 reveal">
+      <p class="text-[#7ba7bc] tracking-[4px] uppercase text-sm mb-4">Gallery</p>
+      <h2 class="section-title font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6">Our Yoga<br><span class="gradient-text">Community</span></h2>
+      <div class="section-divider"></div>
+      <p class="text-[#2c3e50] opacity-60 mt-6 max-w-2xl mx-auto">Glimpses from our yoga sessions, workshops, and the beautiful journey of our students.</p>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Gallery Item 1 - Mountain Pose -->
+    <div class="glass rounded-3xl overflow-hidden hover-lift reveal" style="animation-delay: 0.1s;">
+
+  <div class="aspect-square overflow-hidden">
+    <img src="images/gallary/sirsasana.jpg"
+         alt="Sirsasana yoga pose"
+         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+  </div>
+
+       <div class="p-6">
+        <h4 class="font-semibold mb-2">Sirsasana</h4>
+        <p class="text-sm text-[#2c3e50] opacity-60">Clarity and balance from within</p>
+       </div>
+      </div><!-- Gallery Item 2 - Tree Pose -->
+      <div class="glass rounded-3xl overflow-hidden hover-lift reveal" style="animation-delay: 0.1s;">
+
+  <div class="aspect-square overflow-hidden">
+    <img src="images/gallary/balasana.jpg"
+         alt="Sirsasana yoga pose"
+         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+  </div>
+
+
+       <div class="p-6">
+        <h4 class="font-semibold mb-2">Balasana</h4>
+        <p class="text-sm text-[#2c3e50] opacity-60">Deep rest and gentle surrender</p>
+       </div>
+      </div><!-- Gallery Item 3 - Meditation -->
+     <div class="glass rounded-3xl overflow-hidden hover-lift reveal" style="animation-delay: 0.1s;">
+
+  <div class="aspect-square overflow-hidden">
+    <img src="images/gallary/pranayama.jpg"
+         alt="Sirsasana yoga pose"
+         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+  </div>
+
+       <div class="p-6">
+        <h4 class="font-semibold mb-2">Pranayama</h4>
+        <p class="text-sm text-[#2c3e50] opacity-60">Inner peace and mindfulness</p>
+       </div>
+      </div><!-- Gallery Item 4 - Warrior Pose -->
+     <div class="glass rounded-3xl overflow-hidden hover-lift reveal" style="animation-delay: 0.1s;">
+
+  <div class="aspect-square overflow-hidden">
+    <img src="images/gallary/warrior1.jpg"
+         alt="Sirsasana yoga pose"
+         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+  </div>
+
+
+       <div class="p-6">
+        <h4 class="font-semibold mb-2">Warrior1</h4>
+        <p class="text-sm text-[#2c3e50] opacity-60">Strength, focus, and confidence</p>
+       </div>
+      </div><!-- Gallery Item 5 - Child's Pose -->
+     <div class="glass rounded-3xl overflow-hidden hover-lift reveal" style="animation-delay: 0.1s;">
+
+  <div class="aspect-square overflow-hidden">
+    <img src="images/gallary/bhujangasna.jpg"
+         alt="Sirsasana yoga pose"
+         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+  </div>
+
+       <div class="p-6">
+        <h4 class="font-semibold mb-2">Bhujangasna</h4>
+        <p class="text-sm text-[#2c3e50] opacity-60">Energy and heart opening</p>
+       </div>
+      </div><!-- Gallery Item 6 - Group Session -->
+      <div class="glass rounded-3xl overflow-hidden hover-lift reveal" style="animation-delay: 0.1s;">
+
+  <div class="aspect-square overflow-hidden">
+    <img src="images/gallary/natraj.jpeg"
+         alt="Sirsasana yoga pose"
+         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+  </div>
+
+       <div class="p-6">
+        <h4 class="font-semibold mb-2">Natraj asana</h4>
+        <p class="text-sm text-[#2c3e50] opacity-60">Grace, balance, and flow</p>
+       </div>
+      </div>
+     </div>
+     <div class="text-center mt-16 reveal">
+      <p class="text-[#2c3e50] opacity-60 mb-6">Join our vibrant community and start your transformation today</p><button class="btn-primary" onclick="scrollToSection('contact')">Join Now</button>
+     </div>
+    </div>
+   </section>
+   <!-- Instagram Video Section -->
+<section id="videos" class="py-24 relative overflow-hidden bg-[#ffffff]">
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Heading -->
+    <div class="text-center mb-20 reveal">
+      <p class="text-[#7ba7bc] tracking-[4px] uppercase text-sm mb-4">Watch & Learn</p>
+      <h2 class="section-title font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#2c3e50]">
+        Experience Our<br>
+        <span class="gradient-text">Yoga Sessions</span>
+      </h2>
+      <div class="section-divider"></div>
+      <p class="text-[#2c3e50] opacity-60 mt-6 max-w-2xl mx-auto">
+        Explore our yoga practices through real sessions shared on Instagram.
+      </p>
+    </div>
+
+    <div class="max-w-5xl mx-auto">
+
+      <!-- MAIN BIG INSTAGRAM REEL -->
+      <div class="glass rounded-3xl reveal bg-[#e8f4f8] border border-[#7ba7bc] p-4 mb-14 max-w-3xl mx-auto">
+<div class="relative mx-auto rounded-2xl bg-black overflow-hidden flex items-center justify-center"
+     style="max-width: 420px; height: 480px;">
+
+
+  <blockquote class="instagram-media"
+  data-instgrm-permalink="https://www.instagram.com/reel/DROa5aXDGn2/"
+  data-instgrm-version="14"
+  style="margin: 0 auto; width: 100%; transform: scale(1.05);">
+</blockquote>
+
+
+</div>
+
+
+        <div class="text-center mt-6">
+          <h3 class="text-2xl font-semibold mb-2 text-[#2c3e50]">
+            Featured Yoga Practice
+          </h3>
+          <p class="text-[#2c3e50] opacity-60">
+            Watch our highlighted yoga session directly from Instagram
+          </p>
+        </div>
+      </div>
+
+      <!-- THREE INSTAGRAM REEL CARDS -->
+     <!-- Instagram Reel Grid -->
+<div class="grid md:grid-cols-3 gap-6 mt-12">
+
+  <!-- Morning Yoga -->
+  <div class="glass rounded-2xl reveal bg-[#e8f4f8] border border-[#7ba7bc] p-4">
+    <div class="relative mx-auto rounded-xl bg-black overflow-hidden flex items-center justify-center"
+     style="max-width: 260px; height: 320px;">
+
+
+      <blockquote class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/reel/DSc61mfDZue/"
+        data-instgrm-version="14"
+        style="margin: 0 auto; width: 100%; transform: scale(1.08);">
+      </blockquote>
+
+    </div>
+
+    <div class="text-center mt-3">
+      <h4 class="font-semibold text-sm text-[#2c3e50]">Morning Yoga Flow</h4>
+      <p class="text-xs text-[#2c3e50] opacity-60">Instagram Reel</p>
+    </div>
+  </div>
+
+  <!-- Breathing -->
+  <div class="glass rounded-2xl reveal bg-[#e8f4f8] border border-[#7ba7bc] p-4">
+   <div class="relative mx-auto rounded-xl bg-black overflow-hidden flex items-center justify-center"
+     style="max-width: 260px; height: 320px;">
+
+
+      <blockquote class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/reel/DG08wTLyfZb/"
+        data-instgrm-version="14"
+       style="margin: 0 auto; width: 100%; transform: scale(1.08);">
+      </blockquote>
+
+    </div>
+
+    <div class="text-center mt-3">
+      <h4 class="font-semibold text-sm text-[#2c3e50]">Breathing Practice</h4>
+      <p class="text-xs text-[#2c3e50] opacity-60">Instagram Reel</p>
+    </div>
+  </div>
+
+  <!-- Meditation -->
+  <div class="glass rounded-2xl reveal bg-[#e8f4f8] border border-[#7ba7bc] p-4">
+    <div class="relative mx-auto rounded-xl bg-black overflow-hidden flex items-center justify-center"
+     style="max-width: 260px; height: 320px;">
+
+
+      <blockquote class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/reel/DLcN4hls1wb/"
+        data-instgrm-version="14"
+        style="margin: 0 auto; width: 100%; transform: scale(1.08);">
+      </blockquote>
+
+    </div>
+
+    <div class="text-center mt-3">
+      <h4 class="font-semibold text-sm text-[#2c3e50]">Meditation Session</h4>
+      <p class="text-xs text-[#2c3e50] opacity-60">Instagram Reel</p>
+    </div>
+  </div>
+
+</div>
+
+    </div>
+  </div>
+</section>
+<!-- Testimonials Section -->
+   <section id="testimonials" class="py-24 relative overflow-hidden bg-[#e8f4f8]">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-20 reveal">
+      <p class="text-[#7ba7bc] tracking-[4px] uppercase text-sm mb-4">Testimonials</p>
+      <h2 class="section-title font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#2c3e50]">What Our<br><span class="gradient-text">Students Say</span></h2>
+      <div class="section-divider"></div>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8">
+      <div class="glass rounded-3xl p-8 reveal hover-lift bg-[#ffffff] border border-[#7ba7bc]" style="animation-delay: 0.1s;">
+       <div class="flex items-center gap-1 mb-4"><span class="text-[#7ba7bc]">★</span> <span class="text-[#7ba7bc]">★</span> <span class="text-[#7ba7bc]">★</span> <span class="text-[#7ba7bc]">★</span> <span class="text-[#7ba7bc]">★</span>
+       </div>
+       <p class="text-[#2c3e50] opacity-80 mb-6 italic leading-relaxed">"Hi Ridhi ma'am
+Your online classes helped me throughout my pregnancy
+I'm happy to let you know that we are blessed with a baby boy
+It was a normal vaginal delivery
+Your breathing techniques helped me in coping up with pain
+Thank you so much for your right and positive guidance"</p>
+       <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#7ba7bc] to-[#a8d5e2] flex items-center justify-center text-xl text-white">
+         P
+        </div>
+        <div>
+         <p class="font-semibold text-[#2c3e50]">Monika</p>
+         <p class="text-sm text-[#2c3e50] opacity-60"> Dhanbad</p>
+        </div>
+       </div>
+      </div>
+      <div class="glass rounded-3xl p-8 reveal hover-lift bg-[#ffffff] border border-[#7ba7bc]" style="animation-delay: 0.2s;">
+       <div class="flex items-center gap-1 mb-4"><span class="text-[#7ba7bc]">★</span> <span class="text-[#7ba7bc]">★</span> <span class="text-[#7ba7bc]">★</span> <span class="text-[#7ba7bc]">★</span> <span class="text-[#7ba7bc]">★</span>
+       </div>
+       <p class="text-[#2c3e50] opacity-80 mb-6 italic leading-relaxed">"The  yoga sessions were exactly what I needed . The instructor was patient, knowledgeable, and made me feel safe throughout."</p>
+       <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#7ba7bc] to-[#a8d5e2] flex items-center justify-center text-xl text-white">
+         S
+        </div>
+        <div>
+         <p class="font-semibold text-[#2c3e50]">Shri seviri</p>
+         <p class="text-sm text-[#2c3e50] opacity-60">Portugal</p>
+        </div>
+       </div>
+      </div>
+      <div class="glass rounded-3xl p-8 reveal hover-lift bg-[#ffffff] border border-[#7ba7bc]" style="animation-delay: 0.3s;">
+       <div class="flex items-center gap-1 mb-4"><span class="text-[#7ba7bc]">★</span> <span class="text-[#7ba7bc]">★</span> <span class="text-[#7ba7bc]">★</span> <span class="text-[#7ba7bc]">★</span> <span class="text-[#7ba7bc]">★</span>
+       </div>
+       <p class="text-[#2c3e50] opacity-80 mb-6 italic leading-relaxed">"As a senior citizen, I was hesitant about online yoga. But NaamYoga made it so easy! The flexible timings and gentle approach work perfectly for me."</p>
+       <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#7ba7bc] to-[#a8d5e2] flex items-center justify-center text-xl text-white">
+         R
+        </div>
+        <div>
+         <p class="font-semibold text-[#2c3e50]">Ninad Dinesh</p>
+         <p class="text-sm text-[#2c3e50] opacity-60">kerela</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+<!-- Video Testimonials -->
+<div class="grid md:grid-cols-3 gap-8 mt-16">
+
+  <!-- Video Card 1 -->
+  <div class="glass rounded-3xl p-6 hover-lift bg-[#ffffff] border border-[#7ba7bc]">
+    <div class="aspect-square rounded-2xl overflow-hidden bg-black mb-6">
+      <video
+        class="w-full h-full object-cover"
+        controls
+        preload="metadata"
+        playsinline
+      >
+        <source src="videos/testimonials/testimonial1_final.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 rounded-full bg-[#7ba7bc] text-white flex items-center justify-center font-semibold">
+        E
+      </div>
+      <div>
+        <p class="font-semibold text-[#2c3e50]"> Estela</p>
+        <p class="text-sm text-[#2c3e50] opacity-60">Spain</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Card 2 -->
+  <div class="glass rounded-3xl p-6 hover-lift bg-[#ffffff] border border-[#7ba7bc]">
+    <div class="aspect-square rounded-2xl overflow-hidden bg-black mb-6">
+      <video
+        class="w-full h-full object-cover"
+        controls
+        preload="metadata"
+        playsinline
+      >
+        <source src="videos/testimonials/testimonial2_final.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 rounded-full bg-[#7ba7bc] text-white flex items-center justify-center font-semibold">
+        S
+      </div>
+      <div>
+        <p class="font-semibold text-[#2c3e50]">Shri disusa</p>
+        <p class="text-sm text-[#2c3e50] opacity-60">Portugal</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Card 3 -->
+  <div class="glass rounded-3xl p-6 hover-lift bg-[#ffffff] border border-[#7ba7bc]">
+    <div class="aspect-square rounded-2xl overflow-hidden bg-black mb-6">
+      <video
+        class="w-full h-full object-cover"
+        controls
+        preload="metadata"
+        playsinline
+      >
+        <source src="videos/testimonials/testimonial3_final.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <div class="w-12 h-12 rounded-full bg-[#7ba7bc] text-white flex items-center justify-center font-semibold">
+        R
+      </div>
+      <div>
+        <p class="font-semibold text-[#2c3e50]">Rishiraj</p>
+        <p class="text-sm text-[#2c3e50] opacity-60">Jaipur </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+   </section><!-- Contact Section -->
+   <section id="contact" class="py-24 relative overflow-hidden bg-[#ffffff]">
+    <div class="glow-orb w-80 h-80 bg-[#7ba7bc] opacity-5 top-0 right-0"></div>
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-20 reveal">
+      <p class="text-[#7ba7bc] tracking-[4px] uppercase text-sm mb-4">Get In Touch</p>
+      <h2 class="section-title font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#2c3e50]">Start Your<br><span class="gradient-text">Yoga Journey</span></h2>
+      <div class="section-divider"></div>
+     </div>
+     <div class="grid lg:grid-cols-2 gap-16">
+      <div class="reveal-left">
+       <h3 class="font-serif text-3xl mb-6 text-[#2c3e50]">Book Your Free Trial Session</h3>
+       <p class="text-[#2c3e50] opacity-70 mb-8">Ready to transform your life through yoga? Fill out the form or contact us directly on WhatsApp. We'll get back to you within 24 hours.</p>
+       <div class="space-y-6 mb-8">
+        <div class="flex items-center gap-4">
+         <div class="w-14 h-14 rounded-2xl bg-[#e8f4f8] flex items-center justify-center text-2xl">
+          📱
+         </div>
+         <div>
+          <p class="text-sm text-[#2c3e50] opacity-60">WhatsApp</p>
+          <p id="contactWhatsapp" class="font-semibold text-[#2c3e50]">+91 77177 39328</p>
+         </div>
+        </div>
+        <div class="flex items-center gap-4">
+         <div class="w-14 h-14 rounded-2xl bg-[#e8f4f8] flex items-center justify-center text-2xl">
+          ✉️
+         </div>
+         <div>
+          <p class="text-sm text-[#2c3e50] opacity-60">Email</p>
+          <p id="contactEmail" class="font-semibold text-[#2c3e50]">ridhim328@gmail.com</p>
+         </div>
+        </div>
+        <div class="flex items-center gap-4">
+         <div class="w-14 h-14 rounded-2xl bg-[#e8f4f8] flex items-center justify-center text-2xl">
+          🌐
+         </div>
+         <div>
+          <p class="text-sm text-[#2c3e50] opacity-60">Available</p>
+          <p class="font-semibold text-[#2c3e50]">India &amp; Worldwide</p>
+         </div>
+        </div>
+       </div><a href="https://wa.me/917717739328" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-semibold hover:bg-opacity-90 transition-all hover:scale-105">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg> Chat on WhatsApp </a>
+      </div>
+      <div class="reveal-right">
+       <form id="contactForm" class="glass rounded-3xl p-8 space-y-6 bg-[#e8f4f8] border border-[#7ba7bc]">
+        <div><label for="name" class="block text-sm text-[#2c3e50] opacity-60 mb-2">Your Name</label> <input type="text" id="name" name="name" class="form-input bg-[#ffffff] border-[#7ba7bc] text-[#2c3e50]" placeholder="Enter your name" required>
+        </div>
+        <div><label for="email" class="block text-sm text-[#2c3e50] opacity-60 mb-2">Email Address</label> <input type="email" id="email" name="email" class="form-input bg-[#ffffff] border-[#7ba7bc] text-[#2c3e50]" placeholder="Enter your email" required>
+        </div>
+        <div><label for="phone" class="block text-sm text-[#2c3e50] opacity-60 mb-2">Phone Number</label> <input type="tel" id="phone" name="phone" class="form-input bg-[#ffffff] border-[#7ba7bc] text-[#2c3e50]" placeholder="Enter your phone number">
+        </div>
+        <div><label for="interest" class="block text-sm text-[#2c3e50] opacity-60 mb-2">Interested In</label> <select id="interest" name="interest" class="form-input bg-[#ffffff] border-[#7ba7bc] text-[#2c3e50]"> <option value="">Select a program</option> <option value="hatha">Hatha Yoga</option> <option value="prenatal">Prenatal Yoga</option> <option value="meditation">Meditation</option> <option value="strength">Strength Training</option> <option value="weight">Weight Management</option> <option value="face">Face Yoga</option> <option value="kids">Kids Yoga</option> <option value="advanced">Advanced Yoga</option> </select>
+        </div>
+        <div><label for="message" class="block text-sm text-[#2c3e50] opacity-60 mb-2">Message</label> <textarea id="message" name="message" rows="4" class="form-input resize-none bg-[#ffffff] border-[#7ba7bc] text-[#2c3e50]" placeholder="Tell us about your goals..."></textarea>
+        </div>
+<button 
+  type="submit" 
+  id="sendWhatsApp"
+  class="btn-primary w-full">
+  Send Message
+</button>
+
+        <div id="formMessage" class="hidden text-center py-3 rounded-xl"></div>
+       </form>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-16 bg-[#e8f4f8] border-t border-[#7ba7bc]">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="grid md:grid-cols-4 gap-12 mb-12">
+      <div>
+       <div class="flex items-center gap-3 mb-6">
+        <svg width="40" height="40" viewbox="0 0 100 100"><defs>
+          <lineargradient id="footerLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+           <stop offset="0%" style="stop-color:#7ba7bc" />
+           <stop offset="100%" style="stop-color:#a8d5e2" />
+          </lineargradient>
+         </defs> <path fill="url(#footerLogoGrad)" d="M50 5 C55 25 75 30 75 50 C75 65 65 75 50 80 C35 75 25 65 25 50 C25 30 45 25 50 5Z" /> <circle cx="50" cy="50" r="10" fill="#ffffff" /> <circle cx="50" cy="50" r="5" fill="url(#footerLogoGrad)" />
+        </svg><span id="footerBrandName" class="text-xl font-semibold text-[#2c3e50]">NaamYoga</span>
+       </div>
+       <p id="footerTagline" class="text-[#2c3e50] opacity-60 text-sm leading-relaxed">Where Ancient Yoga Meets Modern Convenience. Experience authentic traditional Indian yoga from anywhere in the world.</p>
+      </div>
+      <div>
+       <h4 class="font-semibold mb-6 text-[#7ba7bc]">Quick Links</h4>
+       <ul class="space-y-3">
+        <li><a href="#home" class="text-[#2c3e50] opacity-60 hover:opacity-100 hover:text-[#7ba7bc] transition-all text-sm">Home</a></li>
+        <li><a href="#about" class="text-[#2c3e50] opacity-60 hover:opacity-100 hover:text-[#7ba7bc] transition-all text-sm">About Us</a></li>
+        <li><a href="#services" class="text-[#2c3e50] opacity-60 hover:opacity-100 hover:text-[#7ba7bc] transition-all text-sm">Services</a></li>
+        <li><a href="#videos" class="text-[#2c3e50] opacity-60 hover:opacity-100 hover:text-[#7ba7bc] transition-all text-sm">Videos</a></li>
+        <li><a href="#schedule" class="text-[#2c3e50] opacity-60 hover:opacity-100 hover:text-[#7ba7bc] transition-all text-sm">Schedule</a></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="font-semibold mb-6 text-[#7ba7bc]">Programs</h4>
+       <ul class="space-y-3">
+        <li><a href="#services" class="text-[#2c3e50] opacity-60 hover:opacity-100 hover:text-[#7ba7bc] transition-all text-sm">Hatha Yoga</a></li>
+        <li><a href="#services" class="text-[#2c3e50] opacity-60 hover:opacity-100 hover:text-[#7ba7bc] transition-all text-sm">Prenatal Yoga</a></li>
+        <li><a href="#services" class="text-[#2c3e50] opacity-60 hover:opacity-100 hover:text-[#7ba7bc] transition-all text-sm">Meditation</a></li>
+        <li><a href="#services" class="text-[#2c3e50] opacity-60 hover:opacity-100 hover:text-[#7ba7bc] transition-all text-sm">Kids Yoga</a></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="font-semibold mb-6 text-[#7ba7bc]">Connect</h4>
+
+<div class="flex gap-4">
+
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/share/1AEzwt81QM/?mibextid=wwXIfr"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="w-10 h-10 rounded-full bg-[#ffffff] flex items-center justify-center text-[#2c3e50] hover:bg-[#7ba7bc] hover:text-[#ffffff] transition-all">
+
+    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.403 24 24 23.403 24 22.674V1.326C24 .597 23.403 0 22.675 0z"/>
+    </svg>
+  </a>
+
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/naam_yoga_?igsh=ZHd2NWIwOTBreG80&utm_source=qr"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="w-10 h-10 rounded-full bg-[#ffffff] flex items-center justify-center text-[#2c3e50] hover:bg-[#7ba7bc] hover:text-[#ffffff] transition-all">
+
+  <!-- Proper Instagram Logo -->
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3h10zm-5 3a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6zm4.5-.25a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z"/>
+  </svg>
+</a>
+
+  <!-- YouTube -->
+  <a href="https://youtube.com/@naam_yoga?si=MDMiMcpc4Sib52pw"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="w-10 h-10 rounded-full bg-[#ffffff] flex items-center justify-center text-[#2c3e50] hover:bg-[#7ba7bc] hover:text-[#ffffff] transition-all">
+
+    <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+    </svg>
+  </a>
+
+</div>
+
+      </div>
+     </div>
+     <div class="border-t border-[#7ba7bc] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-[#2c3e50] opacity-40 text-sm">© 2026 NaamYoga. All rights reserved.</p>
+      <div class="flex gap-6"><a href="#" class="text-[#2c3e50] opacity-40 hover:opacity-100 text-sm transition-all">Privacy Policy</a> <a href="#" class="text-[#2c3e50] opacity-40 hover:opacity-100 text-sm transition-all">Terms of Service</a>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </main><!-- WhatsApp Float Button --> <a href="https://wa.me/917717739328" target="_blank" rel="noopener noreferrer" class="whatsapp-float w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform">
+   <svg width="32" height="32" viewbox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+   </svg></a>
+  <script>
+    // Default Configuration
+    const defaultConfig = {
+      brand_name: 'NaamYoga',
+      tagline: 'Where Ancient Yoga Meets Modern Convenience',
+      whatsapp_number: '+91 77177 39328',
+      email: 'ridhim328@gmail.com',
+      basic_price: '₹1500',
+      standard_price: '₹2500',
+      premium_price: '₹6500',
+      instructor_name: 'Ridhi Mehta',
+      instructor_title: 'Master Yoga Instructor & Wellness Coach',
+      background_color: '#e8f4f8',
+      surface_color: '#ffffff',
+      text_color: '#2c3e50',
+      primary_color: '#7ba7bc',
+      secondary_color: '#a8d5e2'
+    };
+
+    let config = { ...defaultConfig };
+
+    // Element SDK Implementation
+    const element = {
+      defaultConfig,
+      onConfigChange: async (newConfig) => {
+        config = { ...defaultConfig, ...newConfig };
+        
+        // Update brand names
+        const brandElements = ['navBrandName', 'heroBrandName', 'footerBrandName'];
+        brandElements.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = config.brand_name || defaultConfig.brand_name;
+        });
+        
+        // Update taglines
+        const heroTagline = document.getElementById('heroTagline');
+        if (heroTagline) heroTagline.textContent = config.tagline || defaultConfig.tagline;
+        
+        const footerTagline = document.getElementById('footerTagline');
+        if (footerTagline) {
+          footerTagline.textContent = (config.tagline || defaultConfig.tagline) + '. Experience authentic traditional Indian yoga from anywhere in the world.';
+        }
+        
+        // Update contact info
+        const contactWhatsapp = document.getElementById('contactWhatsapp');
+        if (contactWhatsapp) contactWhatsapp.textContent = config.whatsapp_number || defaultConfig.whatsapp_number;
+        
+        const contactEmail = document.getElementById('contactEmail');
+        if (contactEmail) contactEmail.textContent = config.email || defaultConfig.email;
+        
+        // Update pricing
+        const basicPrice = document.getElementById('basicPrice');
+        if (basicPrice) basicPrice.textContent = config.basic_price || defaultConfig.basic_price;
+        
+        const standardPrice = document.getElementById('standardPrice');
+        if (standardPrice) standardPrice.textContent = config.standard_price || defaultConfig.standard_price;
+        
+        const premiumPrice = document.getElementById('premiumPrice');
+        if (premiumPrice) premiumPrice.textContent = config.premium_price || defaultConfig.premium_price;
+        
+        // Update instructor info
+        const instructorName = document.getElementById('instructorName');
+        if (instructorName) instructorName.textContent = config.instructor_name || defaultConfig.instructor_name;
+        
+        const instructorTitle = document.getElementById('instructorTitle');
+        if (instructorTitle) instructorTitle.textContent = config.instructor_title || defaultConfig.instructor_title;
+        
+        // Update colors
+        document.documentElement.style.setProperty('--color-bg', config.background_color || defaultConfig.background_color);
+        document.documentElement.style.setProperty('--color-surface', config.surface_color || defaultConfig.surface_color);
+        document.documentElement.style.setProperty('--color-text', config.text_color || defaultConfig.text_color);
+        document.documentElement.style.setProperty('--color-primary', config.primary_color || defaultConfig.primary_color);
+        document.documentElement.style.setProperty('--color-secondary', config.secondary_color || defaultConfig.secondary_color);
+      },
+      mapToCapabilities: (config) => ({
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              config.surface_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              config.secondary_color = value;
+              if (window.elementSdk) window.elementSdk.setConfig({ secondary_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      }),
+      mapToEditPanelValues: (config) => new Map([
+        ['brand_name', config.brand_name || defaultConfig.brand_name],
+        ['tagline', config.tagline || defaultConfig.tagline],
+        ['whatsapp_number', config.whatsapp_number || defaultConfig.whatsapp_number],
+        ['email', config.email || defaultConfig.email],
+        ['basic_price', config.basic_price || defaultConfig.basic_price],
+        ['standard_price', config.standard_price || defaultConfig.standard_price],
+        ['premium_price', config.premium_price || defaultConfig.premium_price],
+        ['instructor_name', config.instructor_name || defaultConfig.instructor_name],
+        ['instructor_title', config.instructor_title || defaultConfig.instructor_title]
+      ])
+    };
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init(element);
+    }
+
+    // Page Loader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const loader = document.getElementById('pageLoader');
+        if (loader) loader.classList.add('hidden');
+      }, 1500);
+    });
+
+    // Mobile Menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    function toggleMenu(open) {
+      if (mobileMenu && menuOverlay) {
+        mobileMenu.classList.toggle('active', open);
+        menuOverlay.classList.toggle('active', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      }
+    }
+
+    if (menuBtn) menuBtn.addEventListener('click', () => toggleMenu(true));
+    if (closeMenu) closeMenu.addEventListener('click', () => toggleMenu(false));
+    if (menuOverlay) menuOverlay.addEventListener('click', () => toggleMenu(false));
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => toggleMenu(false));
+    });
+
+    // Smooth Scroll
+    function scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (navbar) {
+        if (window.scrollY > 100) {
+          navbar.style.padding = '0.5rem 0';
+        } else {
+          navbar.style.padding = '0';
+        }
+      }
+    });
+
+    // Reveal on scroll
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Counter Animation
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          const target = parseInt(counter.getAttribute('data-target'));
+          let current = 0;
+          const increment = target / 50;
+          const updateCounter = () => {
+            if (current < target) {
+              current += increment;
+              counter.textContent = Math.floor(current).toLocaleString() + '+';
+              requestAnimationFrame(updateCounter);
+            } else {
+              counter.textContent = target.toLocaleString() + '+';
+            }
+          };
+          updateCounter();
+          counterObserver.unobserve(counter);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    
+
+    // Add smooth hover effects to cards
+    document.querySelectorAll('.yoga-card, .schedule-card, .glass').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+      });
+    });
+  </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contactForm");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const interest = document.getElementById("interest").value;
+    const message = document.getElementById("message").value.trim();
+
+    if (!name || !email) {
+      alert("Please enter your Name and Email");
+      return;
+    }
+
+    const whatsappNumber = "917717739328";
+
+    const whatsappMessage =
+`🧘‍♀️ New Yoga Enquiry 🧘‍♂️
+
+👤 Name: ${name}
+📧 Email: ${email}
+📞 Phone: ${phone || "Not provided"}
+📌 Interested In: ${interest || "Not selected"}
+
+📝 Message:
+${message || "No message"}`;
+
+    const whatsappURL =
+      "https://wa.me/" +
+      whatsappNumber +
+      "?text=" +
+      encodeURIComponent(whatsappMessage);
+
+    // ✅ MOBILE + DESKTOP SAFE
+    window.location.href = whatsappURL;
+  });
+});
+</script>
+
+
+<script>
+  function toggleVideo(video) {
+    const wrapper = video.closest(".video-wrapper");
+
+    document.querySelectorAll(".testimonial-video").forEach(v => {
+      if (v !== video) {
+        v.pause();
+        v.closest(".video-wrapper").classList.remove("playing");
+      }
+    });
+
+    if (video.paused) {
+      video.play();
+      wrapper.classList.add("playing");
+    } else {
+      video.pause();
+      wrapper.classList.remove("playing");
+    }
+  }
+</script>
+
+
+
+
+<script async src="https://www.instagram.com/embed.js"></script>
+
+</body>
+</html>
